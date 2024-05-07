@@ -6,8 +6,8 @@ pipeline {
 
 
     environment {
-        AWS_ACCESS_KEY_ID     = credentials('aws_access_key')
-        AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
+        AWS_ACCESS_KEY_ID     = credentials('aws_access_key')  
+        AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key') 
         AWS_DEFAULT_REGION    = "us-west-1"
     }
 
@@ -46,7 +46,8 @@ pipeline {
             steps {
                 // Apply the changes required to reach the desired state of the configuration
                 script {
-                    sh 'terraform apply --auto-approve'
+                    //sh 'terraform apply --auto-approve'
+                    sh 'terraform destroy --auto-approve'
                 }
             }
         }
