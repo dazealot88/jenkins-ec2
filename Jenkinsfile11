@@ -21,12 +21,11 @@ pipeline {
 
         stage('Terraform Init') {
             steps {
-                // Initialize Terraform
                 script {
                     sh "aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID"
                     sh "aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY"
                     sh "aws configure set default.region $AWS_DEFAULT_REGION"
-                    // initailizige terraform
+                    // Initialize Terraform
                     sh 'terraform init'
 
                 }
@@ -46,8 +45,8 @@ pipeline {
             steps {
                 // Apply the changes required to reach the desired state of the configuration
                 script {
-                    //sh 'terraform apply --auto-approve'
-                    sh 'terraform destroy --auto-approve'
+                    sh 'terraform apply --auto-approve'
+                    //sh 'terraform destroy --auto-approve'
                 }
             }
         }
